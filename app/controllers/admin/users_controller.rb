@@ -1,37 +1,22 @@
 module Admin
-  class UsersController < AdminController
-    skip_before_action :require_admin!, only: [:stop_impersonating]
-    respond_to :html, :json
-
+  class UsersController < Admin::ApplicationController
+    # To customize the behavior of this controller,
+    # you can overwrite any of the RESTful actions. For example:
+    #
     def index
       @users = User.all
-
-      respond_with(@users)
+    #   super
+    #   @resources = User.
+    #     page(params[:page]).
+    #     per(10)
     end
 
-    def impersonate
-      user = User.find(params[:id])
-      track_impersonation(user, 'Start')
-      impersonate_user(user)
-      redirect_to root_path
-    end
+    # Define a custom finder by overriding the `find_resource` method:
+    # def find_resource(param)
+    #   User.find_by!(slug: param)
+    # end
 
-    def stop_impersonating
-      track_impersonation(current_user, 'Stop')
-      stop_impersonating_user
-      redirect_to admin_users_path
-    end
-
-    private
-
-    def track_impersonation(user, status)
-      analytics_track(
-        true_user,
-        "Impersonation #{status}",
-        impersonated_user_id: user.id,
-        impersonated_user_email: user.email,
-        impersonated_by_email: true_user.email,
-      )
-    end
+    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
+    # for more information
   end
 end

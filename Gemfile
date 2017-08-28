@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.0'
 # ruby-gemset=game_list
-
+gem 'administrate'
 gem 'autoprefixer-rails'
 
 gem 'flutie'
