@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :gamelists
-  resources :games
   devise_for :users, controllers: {
     registrations: 'devise_customizations/registrations',
   }
+  resources :gamelists
+  resources :games
 
   resources :users do
     member do
