@@ -22,36 +22,34 @@ class GameDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :users,
     :id,
-    :created_at,
+    :name,
+    :users,
     :description,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :users,
     :id,
-    :created_at,
-    :description,
     :name,
-    :updated_at,
+    :description,
+    :users,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :users,
-    :description,
     :name,
+    :description,
+    :users,
   ].freeze
 
   # Overwrite this method to customize how games are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(game)
-  #   "Game ##{game.id}"
-  # end
+  def display_resource(game)
+    game.name
+  end
 end

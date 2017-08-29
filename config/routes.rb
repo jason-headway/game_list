@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     registrations: 'devise_customizations/registrations',
   }
   resources :gamelists
-  resources :games
 
   resources :users do
     member do
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
         get 'stop_impersonating'
       end
     end
+  resources :games
   end
 
   authenticated :user do
