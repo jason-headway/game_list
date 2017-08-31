@@ -63,5 +63,4 @@ Rails.application.configure do
 end
 # NOTE: console can use create(:factory_name), or build(:factory_name) without
 # needing to use FactoryGirl.create(:factory_name).
-include FactoryGirl::Syntax::Methods
 
